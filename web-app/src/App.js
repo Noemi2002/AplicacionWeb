@@ -15,6 +15,13 @@ export class App extends React.Component {
     }, 1000)
   }
 
+  async clickHandler(){
+      const result = await fetchHelloWorld();
+      this.setState({
+          label: result
+      })
+  }
+
   render() {
     return (
       <div className="App">
@@ -27,41 +34,3 @@ export class App extends React.Component {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-/*import { useState } from 'react';
-import './App.css';
-import { fetchHelloWorld } from './services/HelloWorldService';
-
-let timer;
-
-function App() {
-const [currentTime, setCurrentTime] = useState(Date.now());
-const [label, setLabel] = useState(""); //esto es para pedir espacio en memoria 
-const clickHandler = async () => {
-    const result = await fetchHelloWorld();
-    setLabel(result);
-};
-
-if(!timer){
-    timer = setInterval(() => {
-        setCurrentTime(Date.now());
-    }, 1000);
-}
-
-return (
-    <div className="App">
-        {new Date(currentTime).toLocaleString()}
-        <button onClick={() => clickHandler()}>Call API</button>
-        {label}
-    </div>
-);
-}
-export default App;*/
